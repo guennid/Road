@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.buttonSaveFahrzeug = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBoxkmmiles = new System.Windows.Forms.ComboBox();
             this.textBoxLeistung = new System.Windows.Forms.TextBox();
             this.labelLeistung = new System.Windows.Forms.Label();
             this.textBoxHoechstgeschwindigkeit = new System.Windows.Forms.TextBox();
@@ -47,21 +49,36 @@
             this.textBoxKennzeichen = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.wSollDatumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wkmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wIstDatumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wIstkmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wthemaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.wartungBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonNeuesFahrzeug = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.fahrzeugBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wartungBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fahrzeugBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonSaveFahrzeug
             // 
-            this.button1.Location = new System.Drawing.Point(240, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "schreiben";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSaveFahrzeug.Location = new System.Drawing.Point(147, 0);
+            this.buttonSaveFahrzeug.Name = "buttonSaveFahrzeug";
+            this.buttonSaveFahrzeug.Size = new System.Drawing.Size(69, 23);
+            this.buttonSaveFahrzeug.TabIndex = 0;
+            this.buttonSaveFahrzeug.Text = "schreiben";
+            this.buttonSaveFahrzeug.UseVisualStyleBackColor = true;
+            this.buttonSaveFahrzeug.Click += new System.EventHandler(this.buttonSaveFahrzeug_Click);
             // 
             // tabControl1
             // 
@@ -71,11 +88,12 @@
             this.tabControl1.Location = new System.Drawing.Point(21, 53);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(579, 579);
+            this.tabControl1.Size = new System.Drawing.Size(1121, 579);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.comboBoxkmmiles);
             this.tabPage1.Controls.Add(this.textBoxLeistung);
             this.tabPage1.Controls.Add(this.labelLeistung);
             this.tabPage1.Controls.Add(this.textBoxHoechstgeschwindigkeit);
@@ -93,11 +111,22 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(571, 553);
+            this.tabPage1.Size = new System.Drawing.Size(1113, 553);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Fahrzeugdaten";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // comboBoxkmmiles
+            // 
+            this.comboBoxkmmiles.FormattingEnabled = true;
+            this.comboBoxkmmiles.Items.AddRange(new object[] {
+            "km",
+            "miles"});
+            this.comboBoxkmmiles.Location = new System.Drawing.Point(848, 39);
+            this.comboBoxkmmiles.Name = "comboBoxkmmiles";
+            this.comboBoxkmmiles.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxkmmiles.TabIndex = 14;
             // 
             // textBoxLeistung
             // 
@@ -219,67 +248,148 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(571, 553);
+            this.tabPage2.Size = new System.Drawing.Size(1113, 553);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Zu tun";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dataGridView1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(571, 553);
+            this.tabPage3.Size = new System.Drawing.Size(1113, 553);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Wartung";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // dataGridView1
             // 
-            this.button2.Location = new System.Drawing.Point(135, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Neu";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.wSollDatumDataGridViewTextBoxColumn,
+            this.wkmDataGridViewTextBoxColumn,
+            this.wIstDatumDataGridViewTextBoxColumn,
+            this.wIstkmDataGridViewTextBoxColumn,
+            this.wthemaDataGridViewTextBoxColumn,
+            this.Edit});
+            this.dataGridView1.DataSource = this.wartungBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(28, 23);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(621, 502);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // wSollDatumDataGridViewTextBoxColumn
+            // 
+            this.wSollDatumDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.wSollDatumDataGridViewTextBoxColumn.DataPropertyName = "WSollDatum";
+            this.wSollDatumDataGridViewTextBoxColumn.HeaderText = "Durchzuführen bis (Datum)";
+            this.wSollDatumDataGridViewTextBoxColumn.Name = "wSollDatumDataGridViewTextBoxColumn";
+            this.wSollDatumDataGridViewTextBoxColumn.Width = 111;
+            // 
+            // wkmDataGridViewTextBoxColumn
+            // 
+            this.wkmDataGridViewTextBoxColumn.DataPropertyName = "Wkm";
+            this.wkmDataGridViewTextBoxColumn.HeaderText = "Durchzuführen bis (km-Stand)";
+            this.wkmDataGridViewTextBoxColumn.Name = "wkmDataGridViewTextBoxColumn";
+            // 
+            // wIstDatumDataGridViewTextBoxColumn
+            // 
+            this.wIstDatumDataGridViewTextBoxColumn.DataPropertyName = "WIstDatum";
+            this.wIstDatumDataGridViewTextBoxColumn.HeaderText = "Durchgeführt am (Datum)";
+            this.wIstDatumDataGridViewTextBoxColumn.Name = "wIstDatumDataGridViewTextBoxColumn";
+            // 
+            // wIstkmDataGridViewTextBoxColumn
+            // 
+            this.wIstkmDataGridViewTextBoxColumn.DataPropertyName = "WIstkm";
+            this.wIstkmDataGridViewTextBoxColumn.HeaderText = "Durchgeführt bei (km)";
+            this.wIstkmDataGridViewTextBoxColumn.Name = "wIstkmDataGridViewTextBoxColumn";
+            // 
+            // wthemaDataGridViewTextBoxColumn
+            // 
+            this.wthemaDataGridViewTextBoxColumn.DataPropertyName = "wthema";
+            this.wthemaDataGridViewTextBoxColumn.HeaderText = "Wartung";
+            this.wthemaDataGridViewTextBoxColumn.Name = "wthemaDataGridViewTextBoxColumn";
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Edit.HeaderText = "Bearbeiten";
+            this.Edit.Name = "Edit";
+            this.Edit.Width = 64;
+            // 
+            // wartungBindingSource
+            // 
+            this.wartungBindingSource.DataSource = typeof(Oldtimer.Wartung);
+            // 
+            // buttonNeuesFahrzeug
+            // 
+            this.buttonNeuesFahrzeug.Location = new System.Drawing.Point(32, 0);
+            this.buttonNeuesFahrzeug.Name = "buttonNeuesFahrzeug";
+            this.buttonNeuesFahrzeug.Size = new System.Drawing.Size(75, 23);
+            this.buttonNeuesFahrzeug.TabIndex = 6;
+            this.buttonNeuesFahrzeug.Text = "Neu";
+            this.buttonNeuesFahrzeug.UseVisualStyleBackColor = true;
+            this.buttonNeuesFahrzeug.Click += new System.EventHandler(this.ButtonNeuesFahrzeug_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(704, 114);
+            this.comboBox1.Location = new System.Drawing.Point(454, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(252, 21);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Controls.Add(this.buttonNeuesFahrzeug);
+            this.panel1.Controls.Add(this.buttonSaveFahrzeug);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1219, 26);
+            this.panel1.TabIndex = 7;
+            // 
+            // fahrzeugBindingSource
+            // 
+            this.fahrzeugBindingSource.DataSource = typeof(Oldtimer.Fahrzeug);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 650);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
             this.Name = "Main";
             this.Text = "Roadbook";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wartungBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fahrzeugBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSaveFahrzeug;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label labelKennzeichen;
         private System.Windows.Forms.TextBox textBoxKennzeichen;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonNeuesFahrzeug;
         private System.Windows.Forms.Label labelmodell;
         private System.Windows.Forms.Label labelHersteller;
         private System.Windows.Forms.TextBox textBoxModell;
@@ -294,6 +404,17 @@
         private System.Windows.Forms.Label labelIdentifikation;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource fahrzeugBindingSource;
+        private System.Windows.Forms.BindingSource wartungBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wSollDatumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wkmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wIstDatumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wIstkmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wthemaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox comboBoxkmmiles;
     }
 }
 

@@ -23,6 +23,7 @@ namespace Oldtimer
     {
       // private ArrayList arrList = new ArrayList();
         private static List<Fahrzeug> Fahrzeuge = new List<Fahrzeug>();
+        private static List<Wartung> wartungen = new List<Wartung>();
         private static Boolean changedData;
         
 
@@ -39,7 +40,7 @@ namespace Oldtimer
 
         
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSaveFahrzeug_Click(object sender, EventArgs e)
         {
            
             Fahrzeug fahrzeugObjekt;
@@ -64,6 +65,7 @@ namespace Oldtimer
             fahrzeugObjekt.fahrzeugident = textBoxIdentifikation.Text;
             fahrzeugObjekt.hoechstgeschwindigkeit = textBoxHoechstgeschwindigkeit.Text;
             fahrzeugObjekt.leistung = textBoxLeistung.Text;
+            fahrzeugObjekt.kmmiles = comboBoxkmmiles.SelectedIndex;
 
 
 
@@ -126,6 +128,8 @@ namespace Oldtimer
                 textBoxIdentifikation.Text = Fahrzeuge[index].fahrzeugident;
                 textBoxLeistung.Text = Fahrzeuge[index].leistung;
                 textBoxHoechstgeschwindigkeit.Text = Fahrzeuge[index].hoechstgeschwindigkeit;
+                comboBoxkmmiles.SelectedIndex = Fahrzeuge[index].kmmiles;
+                
 
             }
             
@@ -142,7 +146,7 @@ namespace Oldtimer
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ButtonNeuesFahrzeug_Click(object sender, EventArgs e)
         {
 
             // Neu angewählt
@@ -174,6 +178,8 @@ namespace Oldtimer
         {
 
         }
+
+        
     }
 
 

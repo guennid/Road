@@ -29,6 +29,31 @@ namespace Oldtimer
         public string hoechstgeschwindigkeit { get; set; }
         [XmlElement("Leistung")]
         public string leistung { get; set; }
+        [XmlElement("kmmiles")]
+        public int kmmiles { get; set; }
+
+
+
+
+
+
+    }
+    public class Wartung
+    {
+
+        [XmlElement("SollDatum")]
+        public string WSollDatum { get; set; }
+        [XmlElement("Sollkm")]
+        public string Wkm { get; set; }
+        [XmlElement("IstDatum")]
+        public string WIstDatum { get; set; }
+        [XmlElement("Istkm")]
+        public string WIstkm { get; set; }
+        [XmlElement("Thema")]
+        public string wthema { get; set; }
+        [XmlElement("Detail")]
+        public string Wdetail { get; set; }
+        
 
 
 
