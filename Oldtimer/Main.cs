@@ -45,10 +45,16 @@ namespace Oldtimer
            
             Fahrzeug fahrzeugObjekt;
             int index = comboBox1.SelectedIndex;
-            if (index==-1)
+            if (index == -1)
             {
+
                 fahrzeugObjekt = new Fahrzeug();
                 Fahrzeuge.Add(fahrzeugObjekt);
+                if (Fahrzeuge.Count == 0)
+                {
+                    fahrzeugObjekt.identnummer = 1;
+                } else { fahrzeugObjekt.identnummer = Fahrzeuge[Fahrzeuge.Count() - 1].identnummer + 1; }
+
                 comboBox1.Items.Add(textBoxModell.Text + " " + textBoxHersteller.Text);
 
 
@@ -67,23 +73,11 @@ namespace Oldtimer
             fahrzeugObjekt.leistung = textBoxLeistung.Text;
             fahrzeugObjekt.kmmiles = comboBoxkmmiles.SelectedIndex;
 
+            Datenserializer("\\Fahrzeuge.xml");
 
 
-            //Erstelle einen XML-Serialisierer für Objekte vom Typ Blog
 
-            // vorher XmlSerializer serializer = new XmlSerializer(typeof(ArrayList), new Type[] { typeof(Fahrzeug) });
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Fahrzeug>));
-            //Erstelle einen FileStream auf die Datei, in die unserer
-            //Blog-Objekt in XML-Form gespeichert werden soll.
-            FileStream file = new FileStream(Application.StartupPath
-                                             + "\\Fahrzeuge.xml",
-                                             FileMode.Create);
-            //Serialisiere das übergebene Blog-Objekt (blogObj)
-            //und schreibe es in den FileStream.
-            //vorher serializer.Serialize(file, arrList);
-            serializer.Serialize(file, Fahrzeuge);
-            //Schließe die XML-Datei.
-            file.Close();
+            
         }
 
        
@@ -155,6 +149,11 @@ namespace Oldtimer
             textBoxKennzeichen.Text = "";
             textBoxHersteller.Text = "";
             textBoxModell.Text = "";
+            textBoxAntriebsart.Text = "";
+            textBoxIdentifikation.Text = "";
+            textBoxLeistung.Text = "";
+            textBoxHoechstgeschwindigkeit.Text = "";
+            comboBoxkmmiles.SelectedIndex = -1;
 
         }
 
@@ -179,7 +178,38 @@ namespace Oldtimer
 
         }
 
-        
+        private void buttondelFahrzeug_Click(object sender, EventArgs e)
+        {
+            //Delete Entry
+            int index = comboBox1.SelectedIndex;
+            if (index != -1)
+            {
+                Fahrzeuge.RemoveAt(index);
+               Datenserializer("\\Fahrzeuge.xml");
+
+
+            }
+
+        }
+
+
+        private void Datenserializer(string xmldatei)
+        {
+            if (xmldatei.Contains("Fahrzeuge.xml")) { XmlSerializer serializer = new XmlSerializer(typeof(List<Fahrzeug>));
+                FileStream file = new FileStream(Application.StartupPath
+                                         + xmldatei,
+                                         FileMode.Create);
+                serializer.Serialize(file, Fahrzeuge);
+                file.Close();
+            }
+            
+                
+           
+
+
+        }
+
+
     }
 
 

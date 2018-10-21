@@ -12,7 +12,9 @@ namespace Oldtimer
     [XmlRoot(ElementName = "A")]
     public class Fahrzeug
     {
-        
+
+        [XmlElement("IdentNummer")]
+        public int identnummer { get; set; }
         [XmlElement("Name")]
         public string name { get; set; }
         [XmlElement("Hersteller")]
